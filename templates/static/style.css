@@ -1,14 +1,23 @@
-#board-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+#board {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(10, 1fr);
+      gap: 2px;
+      background-color: #eee;
+      width: 500px;
+      height: 500px;
 }
 
-#board {
-  display: grid;
-  gap: 1px;
-  background-color: #eee;
-  border: 1px solid #ccc;
-  padding: 10px;
+.cell {
+      background-color: white;
+      border: 1px solid #ccc;
+      cursor: pointer;
+}
+
+.cell.blue {
+      background-color: blue;
+}
+
+.cell.red {
+      background-color: red;
 }
