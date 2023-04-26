@@ -1,0 +1,14 @@
+#board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#board {
+  display: grid;
+  gap: 1px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
