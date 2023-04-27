@@ -2,7 +2,6 @@ function createGrid() {
   // Initialize variables for cell coloring
   let maxBlueCells = 2;
   let blueCells = 0;
-
   // Get grid dimensions from inputs
   const gridWidth = Number(document.getElementById("grid-width").value);
   const gridHeight = Number(document.getElementById("grid-height").value);
@@ -14,6 +13,9 @@ function createGrid() {
   // Set container width and height based on grid size
   container.style.width = `${gridWidth * 25}px`;
   container.style.height = `${gridHeight * 25}px`;
+
+  // Set a variable for mouse press
+  var isMouseDown = true;
 
 
   // Create grid cells and attach event listeners
