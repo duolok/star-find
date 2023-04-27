@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Clickable Grid</title>
-  <link rel="stylesheet" href="static/style.css">
-    </head>
-    <body>
-    <div id="board"></div>
-    <script src="static/manage_table.js"> </script>
-    </body>
+  <head>
+    <title>Notebook Grid</title>
+    <style>
+      #container {
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        justify-content: center;
+      }
+      .cell {
+        width: 50px;
+        height: 50px;
+        border: 1px solid black;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+      .cell.blue {
+          background-color: blue;
+      }
+
+      .cell.red {
+          background-color: red;
+      }
+
+    </style>
+  </head>
+  <body>
+    <label for="grid-width">Grid width:</label>
+    <input type="number" id="grid-width" min="1" max="50" value="10" />
+    <label for="grid-height">Grid height:</label>
+    <input type="number" id="grid-height" min="1" max="50" value="10" />
+    <button onclick="createGrid()">Create Grid</button>
+
+    <div id="container"></div>
+
+    <script src="static/manage_table.js"></script>
+  </body>
 </html>
+
