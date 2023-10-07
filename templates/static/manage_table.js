@@ -6,7 +6,7 @@ function createGrid() {
   const gridWidth = Number(document.getElementById("grid-width").value);
   const gridHeight = Number(document.getElementById("grid-height").value);
 
-  // Get container element and clear previous grid
+  // Get container element and clear the previous grid
   const container = document.getElementById("container");
   container.innerHTML = "";
 
@@ -16,7 +16,6 @@ function createGrid() {
 
   // Set a variable for mouse press
   var isMouseDown = true;
-
 
   // Create grid cells and attach event listeners
   for (let i = 0; i < gridWidth * gridHeight; i++) {
