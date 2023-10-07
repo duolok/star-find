@@ -15,7 +15,7 @@ function createGrid() {
   container.style.height = `${gridHeight * 25}px`;
 
   // Set a variable for mouse press
-  var isMouseDown = true;
+  var isMouseDown = false;
 
   // Create grid cells and attach event listeners
   for (let i = 0; i < gridWidth * gridHeight; i++) {
@@ -50,10 +50,8 @@ function createGrid() {
   function handleMouseEnter() {
     if (isMouseDown) {
       const cell = this;
-      if (!cell.classList.contains("blue") && !cell.classList.contains("red")) {
+      if (!cell.classList.contains("blue")) {
         cell.classList.add("red");
-      } else if (cell.classList.contains("red")) {
-        cell.classList.remove("red");
       }
     }
   }
@@ -65,12 +63,13 @@ function createGrid() {
   function handleContextMenu(event) {
     event.preventDefault();
     const cell = this;
-    if (!cell.classList.contains("blue")) {
-      if (cell.classList.contains("red")) {
-        cell.classList.remove("red");
-      } else {
-        cell.classList.add("red");
-      }
+    if (cell.classList.contains("blue")) {
+      cell.classList.remove("blue");
+      blueCells--;
+    } else if (cell.classList.contains("red")) {
+      cell.classList.remove("red");
+    } else {
+      cell.classList.add("red");
     }
   }
 }
