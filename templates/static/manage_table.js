@@ -1,16 +1,16 @@
 function createGrid() {
-  // Initialize variables for cell coloring
+  // initialize variables for cell coloring
   let maxBlueCells = 2;
   let blueCells = 0;
-  // Get grid dimensions from inputs
+  // get grid dimensions from inputs
   const gridWidth = Number(document.getElementById("grid-width").value);
   const gridHeight = Number(document.getElementById("grid-height").value);
 
-  // Get container element and clear the previous grid
+  // get container element and clear the previous grid
   const container = document.getElementById("container");
   container.innerHTML = "";
 
-  // Set container width and height based on grid size
+  // set container width and height based on grid size
   container.style.width = `${gridWidth * 25}px`;
   container.style.height = `${gridHeight * 25}px`;
 
@@ -40,12 +40,12 @@ function createGrid() {
         blueCells++;
       }
     }
-    event.preventDefault(); // Prevents text selection when dragging
+    event.preventDefault(); // prevents text selection when dragging
   }
 
   function handleMouseEnter(event) {
     const cell = this;
-    if (event.buttons === 1) { // Check if the left mouse button is pressed
+    if (event.buttons === 1) { // check if the left mouse button is pressed
       if (!cell.classList.contains("blue")) {
         cell.classList.add("red");
       } else if (cell.classList.contains("red")) {
