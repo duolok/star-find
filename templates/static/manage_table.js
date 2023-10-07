@@ -14,9 +14,6 @@ function createGrid() {
   container.style.width = `${gridWidth * 25}px`;
   container.style.height = `${gridHeight * 25}px`;
 
-  // Set a variable for mouse press
-  var isMouseDown = false;
-
   // Create grid cells and attach event listeners
   for (let i = 0; i < gridWidth * gridHeight; i++) {
     const cell = document.createElement("div");
@@ -26,15 +23,13 @@ function createGrid() {
 
     cell.addEventListener("mousedown", handleMouseDown);
     cell.addEventListener("mouseenter", handleMouseEnter);
-    cell.addEventListener("mouseup", handleMouseUp);
     cell.addEventListener("contextmenu", handleContextMenu);
 
     container.appendChild(cell);
   }
 
   // Functions for mouse event handling
-  function handleMouseDown() {
-    isMouseDown = true;
+  function handleMouseDown(event) {
     const cell = this;
     if (!cell.classList.contains("red")) {
       if (cell.classList.contains("blue")) {
@@ -45,19 +40,18 @@ function createGrid() {
         blueCells++;
       }
     }
+    event.preventDefault(); // Prevents text selection when dragging
   }
 
-  function handleMouseEnter() {
-    if (isMouseDown) {
-      const cell = this;
+  function handleMouseEnter(event) {
+    const cell = this;
+    if (event.buttons === 1) { // Check if the left mouse button is pressed
       if (!cell.classList.contains("blue")) {
         cell.classList.add("red");
+      } else if (cell.classList.contains("red")) {
+        cell.classList.remove("red");
       }
     }
-  }
-
-  function handleMouseUp() {
-    isMouseDown = false;
   }
 
   function handleContextMenu(event) {
