@@ -8,26 +8,21 @@ end = (6, 9)
 
 obstacles = {
     (3, 4), (3, 5), (3, 6), (3, 7), (3, 8),
-    (4, 5),
+    (4, 5), 
     (5, 5), (5, 7), (5, 9),
     (6, 2), (6, 3), (6, 4), (6, 5), (6, 7),
     (7, 7)
 }
 
-def successors(state, visited_nodes, matrix, obstaclestwo):
-    (row, col) = state
-    (max_row, max_col) = matrix
-    succ_states = []
-    if row > 1:
-        succ_states += [(row-1, col)]
-    if col > 1:
-        succ_states += [(row, col-1)]
-    if row < max_row:
-        succ_states += [(row+1, col)]
-    if col < max_col:
-        succ_states += [(row, col+1)]
+def successors(state, visited_nodes, matrix, obstacles):
+    max_row, max_col = matrix
+    r, c = state
+    valid_states = [(r - 1, c), (r, c - 1), (r + 1, c), (r, c + 1)]
 
-    return [s for s in succ_states if s not in visited_nodes if s not in obstaclestwo]
+    def is_valid_state(r, c):
+        return 1 <= r <= max_row and 1 <= c <= max_col and (r, c) not in visited_nodes and (r, c) not in obstacles
+
+    return [(r, c) for r, c in valid_states if is_valid_state(r, c)]
 
 def initialize_costs(matrix, start):
     (h, w) = matrix
@@ -41,7 +36,7 @@ def heuristic(node, goal):
     (u, v) = goal
     return math.sqrt(abs(x-u) ** 2 + abs(y - v) ** 2)
 
-def astar_with_path(start, end, matrix, obstacles):
+def astar(start, end, matrix, obstacles):
     frontier = []
     internal = set()
     heapq.heappush(frontier, (0, start))
@@ -81,4 +76,4 @@ def astar_with_path(start, end, matrix, obstacles):
                 heapq.heappush(frontier, (new_distance + heuristic(s, end), s))
 
 if __name__ == "__main__":
-    print(astar_with_path(start, end, size, obstacles))
+    print(astar(start, end, size, obstacles))
