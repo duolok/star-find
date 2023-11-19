@@ -1,19 +1,6 @@
 import math
 import heapq
 
-# test case to be deleated one the parser is done
-size = (100, 100)
-start = (5, 3)
-end = (6, 9)
-
-obstacles = {
-    (3, 4), (3, 5), (3, 6), (3, 7), (3, 8),
-    (4, 5), 
-    (5, 5), (5, 7), (5, 9),
-    (6, 2), (6, 3), (6, 4), (6, 5), (6, 7),
-    (7, 7)
-}
-
 def successors(state, visited_nodes, matrix, obstacles):
     max_row, max_col = matrix
     r, c = state
@@ -74,6 +61,3 @@ def astar(start, end, matrix, obstacles):
                 set_distance_from_start(s, new_distance)
                 frontier = [n for n in frontier if s != n[1]]
                 heapq.heappush(frontier, (new_distance + heuristic(s, end), s))
-
-if __name__ == "__main__":
-    print(astar(start, end, size, obstacles))
