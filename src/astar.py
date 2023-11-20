@@ -7,7 +7,7 @@ def successors(state, visited_nodes, matrix, obstacles):
     valid_states = [(r - 1, c), (r, c - 1), (r + 1, c), (r, c + 1)]
 
     def is_valid_state(r, c):
-        return 1 <= r <= max_row and 1 <= c <= max_col and (r, c) not in visited_nodes and (r, c) not in obstacles
+        return 0 <= r < max_row and 0 <= c < max_col and (r, c) not in visited_nodes and (r, c) not in obstacles
 
     return [(r, c) for r, c in valid_states if is_valid_state(r, c)]
 
@@ -15,7 +15,7 @@ def initialize_costs(matrix, start):
     (h, w) = matrix
     costs = [[math.inf] * w for i in range(h)]
     (x, y) = start
-    costs[x-1][y-1] = 0
+    costs[x][y] = 0
     return costs
 
 def heuristic(node, goal):
@@ -30,10 +30,10 @@ def astar(start, end, matrix, obstacles):
     costs = initialize_costs(matrix, start)
 
     def get_distance_from_start(node):
-        return costs[node[0]-1][node[1]-1]
+        return costs[node[0]][node[1]]
     
     def set_distance_from_start(node, new_distance):
-        costs[node[0]-1][node[1]-1] = new_distance
+        costs[node[0]][node[1]] = new_distance
 
     def get_shortest_path(end_node):
         path = [end_node]
