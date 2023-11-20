@@ -22,3 +22,10 @@
     background-color: red; 
 }
 
+.cell.visited {
+  background-color: lightblue;
+}
+
+.cell.path {
+  background-color: green;
+}
