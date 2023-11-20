@@ -1,7 +1,10 @@
+
+let maxBlueCells = 2;
+let blueCells = 0;
+
 function createGrid() {
   // initialize variables for cell coloring
-  let maxBlueCells = 2;
-  let blueCells = 0;
+
   // get grid dimensions from inputs
   const gridWidth = Number(document.getElementById("grid-width").value);
   const gridHeight = Number(document.getElementById("grid-height").value);
@@ -66,4 +69,12 @@ function createGrid() {
       cell.classList.add("red");
     }
   }
+}
+
+function clearGrid() {
+  const cells = document.querySelectorAll('.cell');
+  cells.forEach(cell => {
+    cell.classList.remove('red', 'blue', 'path');
+  });
+  blueCells = 0; 
 }

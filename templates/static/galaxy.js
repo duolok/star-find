@@ -261,15 +261,6 @@ Flare.prototype.render = function() {
 	var pos = position(this.x, this.y, this.z),
 		r = ((this.z * flareSizeMultiplier) + flareSizeBase) * (sizeRatio() / 1000);
 
-	var grad = context.createRadialGradient(x+r,y+r,0,x+r,y+r,r);
-	grad.addColorStop(0, 'rgba(255,255,255,'+f.o+')');
-	grad.addColorStop(0.8, 'rgba(255,255,255,'+f.o+')');
-	grad.addColorStop(1, 'rgba(255,255,255,0)');
-	context.fillStyle = grad;
-	context.beginPath();
-	context.fillRect(x, y, r*2, r*2);
-	context.closePath();
-
 	context.beginPath();
 	context.globalAlpha = this.opacity;
 	context.arc(pos.x, pos.y, r, 0, 2 * Math.PI, false);
@@ -332,10 +323,7 @@ Link.prototype.render = function() {
 
 						this.distances.push(dist);
 				}
-				//console.log('Distances: '+JSON.stringify(this.distances));
-				//console.log('verts: '+this.verts.length+' distances: '+this.distances.length);
 
-				//console.log(this.verts[0]+' moving to stage 1');
 				this.stage = 1;
 			}
 		break;
@@ -361,7 +349,6 @@ Link.prototype.render = function() {
 				if (this.traveled >= d) {
 					this.traveled = 0;
 					// We've reached the next point, add coordinates to array
-					//console.log(this.verts[0]+' reached vertex '+(this.linked.length+1)+' of '+this.verts.length);
 
 					this.linked.push(this.verts[this.linked.length]);
 					p = particles[this.linked[this.linked.length-1]];
@@ -369,7 +356,6 @@ Link.prototype.render = function() {
 					points.push([pos.x, pos.y]);
 
 					if (this.linked.length >= this.verts.length) {
-						//console.log(this.verts[0]+' moving to stage 2 (1)');
 						this.stage = 2;
 					}
 				}
@@ -385,7 +371,6 @@ Link.prototype.render = function() {
 
 					pos = position(x, y, z);
 
-					//console.log(this.verts[0]+' traveling to vertex '+(this.linked.length+1)+' of '+this.verts.length+' ('+this.traveled+' of '+this.distances[this.linked.length]+')');
 
 					points.push([pos.x, pos.y]);
 				}
@@ -393,7 +378,6 @@ Link.prototype.render = function() {
 				this.drawLine(points);
 			}
 			else {
-				//console.log(this.verts[0]+' prematurely moving to stage 3 (1)');
 				this.stage = 3;
 				this.finished = true;
 			}
