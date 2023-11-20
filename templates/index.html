@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="static/style.css">
   </head>
   <body>
+    <canvas id="stars" ></canvas>
     <label for="grid-width">Grid width:</label>
     <input type="number" id="grid-width" min="1" max="50" value="10" />
     <label for="grid-height">Grid height:</label>
@@ -14,9 +15,11 @@
     <button onclick="exportGrid()">Export Grid</button>
     <div id="container"></div>
     <!-- Load JavaScript files -->
+    <script src='http://requirejs.org/docs/release/2.1.15/minified/require.js'></script>
+    <script src='https://rawgit.com/ironwallaby/delaunay/master/delaunay.js'></script><script  src="./script.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="static/manage_table.js"></script>
     <script src="static/export_table.js"></script>
-    <script src="static/visualize_path.js"></script>
+    <script src="static/galaxy.js"></script>
   </body>
 </html>
