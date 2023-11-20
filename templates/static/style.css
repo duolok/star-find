@@ -45,7 +45,7 @@ canvas {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-h3 {
+h2 {
   font-family: 'Bayon', sans-serif;
 }
 
@@ -70,14 +70,14 @@ body, label, input, button {
 }
 
 .cell.blue { 
-    background-color: blue; 
+    background-color: #3a9ebf; 
 }
 
 .cell.red { 
-    background-color: red; 
+    background-color: #bf3a5c; 
 }
 
 .cell.path {
-  background-color: green;
+  background-color: #b09c35;
 }
 
