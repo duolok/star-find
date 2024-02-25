@@ -12,8 +12,6 @@ python3 run.py
 
 Go to http://localhost:5000/.
 
-Recommended: Press F11 to use Fullscreen.
-
 ### Usage
 After you create a grid, you will need to set the start coordinates and the end points. Start and End points are marked in blue. Add obstacles by holding left-click and hovering over the grid. To remove obstacles, click on them. Once satisfied, click 'Visualize' to find a path. If no path is available, adjust the grid as needed. 
 
