@@ -1,4 +1,4 @@
-![image](https://github.com/duolok/star-find/assets/42711489/61294b0b-2e59-42bb-acb8-fdfb0652f18b)
+![image](https://github.com/duolok/star-find/assets/42711489/0397a6cf-d0a3-4044-a61e-989659e8150a)
 
 <h1 align="center"> Star-Find </h1>
 
